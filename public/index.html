@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    socket.on('connect', function() {
+      var divItem = document.getElementById('message');
+      console.log("Connected to the server");
+      if(divItem!==undefined) {
+        divItem.innerHTML = "Connected to the server";
+      }
+    });
+
+    socket.on('disconnect', function() {
+      var divItem = document.getElementById('message');
+      console.log("Disconnected from the server");
+      if(divItem!==undefined) {
+        divItem.innerHTML = "Disconnected from the server";
+      }
+
+    });
+  </script>
+</head>
+<body>
+  <h1>Hello World!</h1>
+  <div id="message"></div>
+</body>
+</html>
