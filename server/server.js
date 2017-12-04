@@ -15,6 +15,16 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('New connection event received from client');
 
+    socket.emit('new email', {
+      from : 'Shekhar',
+      to : 'Divya',
+      message : 'Hi, How are you?'
+    });
+
+    socket.on('create email', (data) => {
+      console.log("Composed new email with this info ", data);      
+    });
+
     socket.on('disconnect', (socket) => {
         console.log('Client disconnected event received');
     });
